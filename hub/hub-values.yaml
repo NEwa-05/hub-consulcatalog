@@ -1,0 +1,41 @@
+image:
+  registry: ghcr.io
+  repository: traefik/traefik-hub
+  tag: "v3"
+deployment:
+  replicas: 1
+ingressRoute:
+  dashboard:
+    enabled: false
+ingressClass:
+  enabled: false
+providers:
+  kubernetesCRD:
+    enabled: true
+    allowEmptyServices: true
+logs:
+  general:
+    format: json
+    level: DEBUG
+  access:
+    enabled: true
+    format: json
+    addInternals: true
+    fields:
+      general:
+        defaultmode: keep
+      headers:
+        defaultmode: keep
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  limits:
+    memory: 256Mi
+    cpu: 100m
+hub:
+  token: hub-license
+additionalArguments:
+  - --providers.consulcatalog.endpoint.address=consul-server.consul.svc.cluster.local:8500
+  - --providers.consulcatalog.endpoint.scheme=http
+  - --providers.consulcatalog.exposedByDefault=false

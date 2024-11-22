@@ -1,0 +1,23 @@
+global:
+  logLevel: DEBUG
+  logJSON: true
+  enabled: false
+  name: consul
+  datacenter: dc1
+  tls:
+    enabled: false
+  acls:
+    manageSystemACLs: false
+server:
+  logLevel: INFO
+  enabled: true
+  replicas: 1
+ui:
+  enabled: true
+  service:
+    type: ClusterIP
+connectInject:
+  enabled: false
+syncCatalog:
+  enabled: true
+  toConsul: true

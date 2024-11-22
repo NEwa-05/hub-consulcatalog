@@ -1,0 +1,15 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: consul-dashboard
+  namespace: consul
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`consul.docker.localhost`)
+      services:
+        - name: consul-ui
+          port: 80
