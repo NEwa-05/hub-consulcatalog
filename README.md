@@ -95,3 +95,10 @@ Content-Length: 19
 
 404 page not found
 ```
+
+## Destroy env at the end
+
+```bash
+k3d cluster stop repro 
+k3d cluster delete repro
+```
